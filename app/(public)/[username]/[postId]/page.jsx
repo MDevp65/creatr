@@ -102,7 +102,8 @@ const PostPage = ({ params }) => {
         e.preventDefault();
 
         if (!currentUser) {
-            toast.error("Please sign in to comment");
+            router.push('/sign-in')
+            toast.warning("Please sign in to comment");
             return;
         }
 
