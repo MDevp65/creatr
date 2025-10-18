@@ -10,9 +10,10 @@ import { Button } from '@/components/ui/button'
 import { Calendar, UserCheck, UserPlus } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import PostCard from '@/components/custom/PostCard'
+import { useRouter } from 'next/navigation'
 
 const UserNamePage = ({ params }) => {
-
+    const router = useRouter()
     const { username } = React.use(params)
     const { user: currentUser } = useUser()
 
@@ -57,7 +58,8 @@ const UserNamePage = ({ params }) => {
 
     const handleFollowToggle = async () => {
         if (!currentUser) {
-            toast.error("Please sign in to follow users");
+            router.push('/sign-in');
+            toast.warning("Please sign in to follow users");
             return;
         }
 
