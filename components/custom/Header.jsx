@@ -12,7 +12,6 @@ import { LayoutDashboard } from 'lucide-react'
 
 const Header = () => {
   const { isAuthenticated, isLoading } = useStoreUserEffect()
-  const { isSignedIn } = useAuth()
   const path = usePathname()
   const router = useRouter()
 
@@ -20,12 +19,8 @@ const Header = () => {
     if (!isLoading && isAuthenticated && path === '/') {
       router.push("/feed")
     }
-
-    // Redirect to "/" if user is logged out
-    if (!isSignedIn && path !== "/") {
-      router.push("/");
     }
-  }, [isLoading, isAuthenticated, isSignedIn, path, router])
+  }, [isLoading, isAuthenticated, path, router])
 
   // Hide header on public profile and post pages (but not on feed)
   if (path !== "/" && path !== "/feed" && path.split("/").length >= 2) {
