@@ -19,7 +19,6 @@ const Header = () => {
     if (!isLoading && isAuthenticated && path === '/') {
       router.push("/feed")
     }
-    }
   }, [isLoading, isAuthenticated, path, router])
 
   // Hide header on public profile and post pages (but not on feed)
